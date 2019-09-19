@@ -1,14 +1,17 @@
 //  Factory Pattern:
-//      It lets you create an object as a creator, a factory, a production machine in other terms 
-//      Only you should give the necessary type of what you want it to create
+//      It creates pile of objects as a production machine (in other terms)
+//      Only you should pass the necessary type of what you want it to create
    
 import java.lang.System; 
 
 public class Factory { 
+
+    static SaladMakingFactory saladMaker = new SaladMakingFactory();
+
     public static void main(String[] args) {
-        System.out.println("Factory pattern exercise begins!!"); 
+        System.out.println("\n Factory pattern exercise begins!!"); 
         System.out.println("\n ... \n ... \n ...  \n ...  \n ... ");
-        SaladMakingFactory.mixIt(SaladMakingFactory.makeItRightNow(SaladType.VegetableSalad));
+        saladMaker.mixIt(saladMaker.makeItRightNow(SaladType.VegetableSalad));
     }
 
     interface Ingredient {
@@ -17,8 +20,8 @@ public class Factory {
     }
      
     interface Salad {
-        Ingredient[] makeItRightNow();
-        void mixIt();
+        Ingredient[] makeItRightNow(Factory.SaladType type);
+        void mixIt(Factory.Ingredient[] choppedInBowl);
     }
  
     enum SaladType {
@@ -31,7 +34,7 @@ public class Factory {
 
 class SaladMakingFactory implements Factory.Salad {   
     @Override
-    public static Factory.Ingredient[] makeItRightNow(Factory.SaladType type) { 
+    public Factory.Ingredient[] makeItRightNow(Factory.SaladType type) { 
         switch(type) {
             case FruitSalad:  
                 return new Factory.Ingredient[] {
@@ -49,24 +52,24 @@ class SaladMakingFactory implements Factory.Salad {
                     new AnySubstance("Sunflower Seed Oil"),
                 };
             case OtherType: 
-            case None: 
+            case None:  
                 return null;
-                break; 
-        } 
+        }
+        return null;
     }
 
     @Override
-    public static void mixIt(Factory.Ingredient[] choppedInBowl) {
+    public void mixIt(Factory.Ingredient[] choppedInBowl) {
         if (choppedInBowl == null) { 
             System.out.print("\n Sorry! \n Nothing exists in the bowl!");
         } else {
             for (Factory.Ingredient i : choppedInBowl) {
-                i.smell();
-                i.taste();
+                i.smells();
+                i.tastes();
             }
             System.out.println("\n ... \n ... \n ...  \n ...  \n ... ");
-            System.out.print("Done!");
-            System.out.print("Ready to enjoy!");
+            System.out.print("\n Done!");
+            System.out.print("\n Ready to enjoy! \n \n");
         }
     }
 }
@@ -80,7 +83,7 @@ class Vegetable implements Factory.Ingredient {
 
     @Override
     public void smells() {
-        System.out.printf("\n Any %s has a smells", this.name);
+        System.out.printf("\n Any %s has a smell", this.name);
     }
 
     @Override
