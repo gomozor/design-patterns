@@ -1,10 +1,10 @@
 # design-patterns
-Design patterns are previously created, algorithmic solutions for common problems and can be applied in any object-oriented language.
+design patterns are previously created, algorithmic solutions for common problems and can be applied in any object-oriented language.
 
-Running swift pattern command
------------------------------
+to run a swift pattern in terminal
+-----------------------------------
 
-Type the command after the dollar sign and hit enter:
+type the command after the dollar sign and hit enter:
 
 ```
 $ swift Factory.swift
