@@ -8,7 +8,6 @@ type the command after the dollar sign and hit enter:
 
 ```
 $ swift Factory.swift
-
  Factory pattern exercise begins!!
 
  ... 
