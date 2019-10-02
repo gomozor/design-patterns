@@ -1,6 +1,5 @@
 //
 //  AbstractFactory.swift
-//  patterns
 //
 //  Created by Developer on 29.09.2019.
 //  Copyright © 2019 Developer. All rights reserved.
@@ -11,8 +10,7 @@
 //      It's like, imlementation of the abstraction behind, the abstraction
 //  -------------------------------------------------------------------------
 
-
-// -
+ 
 
 import Foundation
 
