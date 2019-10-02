@@ -7,7 +7,7 @@
 //  AbstractFactory Pattern:
 //      It works like a super factory, creator of sub-factories
 //      Also, called as factory of factories
-//      It's like, imlementation of the abstraction behind, the abstraction
+//      It's like, imlementation of the abstraction, behind the abstraction
 //  -------------------------------------------------------------------------
 
  
