@@ -17,8 +17,6 @@
 import Foundation
 
 
-//This protocol is responsible for creation of factories
-
 //Enums - Types
 enum VehicleType {
     case motorcyle
@@ -40,7 +38,6 @@ enum BikeType : String {
     case chopper
     case supersport
 }
- 
 
 //Protocols - Interfaces - Abstractions
 protocol Vehicle {
@@ -48,16 +45,36 @@ protocol Vehicle {
 }
 
 protocol AbstractFactory {
-    static func get(type:String) -> Vehicle?
-}
-
-protocol Producer {
-    static func getAbstractFactory() -> AbstractFactory
+    func get(type:String) -> Vehicle?
 }
 
 //Classes - Implementations
+class Sedan: Vehicle {
+    func getSpecs() {
+        print("\nSedan(US)/Saloon(UK) is traditionally defined as a car with four doors and a typical trunk.")
+    }
+}
+
+class Hatchback: Vehicle {
+    func getSpecs() {
+        print("\nA hatchback is a car type with a rear door that opens upwards.")
+    }
+}
+
+class NakedBike: Vehicle {
+    func getSpecs() {
+        print("\nNaked bikes recall British motorcycles of the sixties.")
+    }
+}
+
+class Chopper: Vehicle {
+    func getSpecs() {
+        print("\nChoppers tend to have extremely raked forks, like Harley-Davidson.")
+    }
+}
+
 class CarFactory : AbstractFactory {
-    static func get(type: String) -> Vehicle? {
+    func get(type: String) -> Vehicle? {
         if let carType = CarType(rawValue: type) {
             switch carType {
                 case .sedan:
@@ -73,13 +90,13 @@ class CarFactory : AbstractFactory {
 }
 
 class MotorcycleFactory : AbstractFactory {
-    static func get(type: String) -> Vehicle? {
+    func get(type: String) -> Vehicle? {
         if let bikeType = BikeType(rawValue: type) {
             switch bikeType {
-                case .sedan:
-                    return Sedan()
-                case .hatchback:
-                    return Hatchback()
+                case .naked:
+                    return NakedBike()
+                case .chopper:
+                    return Chopper()
                 default:
                     return nil
             }
@@ -87,29 +104,40 @@ class MotorcycleFactory : AbstractFactory {
         return nil
     }
 }
-
-
-class Sedan: Vehicle {
-    func getSpecs() {
-        print("Sedan(US) or Saloon(UK) is traditionally defined as a car with four doors and a typical boot/ trunk.")
+ 
+//Final Class - sums up all the abstraction & is responsible of creation of all factories
+class Producer {
+    static func getAbstractFactory(factoryType:VehicleType) -> AbstractFactory {
+        switch factoryType {
+            case .motorcyle:
+                return MotorcycleFactory()
+            case .car:
+                return CarFactory()
+        }
     }
 }
 
-class Hatchback: Vehicle {
-    func getSpecs() {
-        print("A hatchback is a car type with a rear door that opens upwards.")
-    }
-}
 
-class NakedBike: Vehicle {
-    func getSpecs() {
-        print("Naked bikes recall British motorcycles of the sixties.")
-    }
-}
+//  -------------------------------------------------------------------------
+//  -------------------------------------------------------------------------
+//                                  TEST NOW
+//  -------------------------------------------------------------------------
+//  -------------------------------------------------------------------------
+  
 
-class Choppers: Vehicle {
-    func getSpecs() {
-        print("Naked bikes recall British motorcycles of the sixties.")
-    }
-}
+print("\nAbstractFactory pattern exercise begins!!")
+print("\n ... \n ... \n ...  \n ...  \n ... ")
 
+//Produce bikes first
+let bikeFactory = Producer.getAbstractFactory(factoryType: .motorcyle)
+bikeFactory.get(type: "naked")?.getSpecs()
+bikeFactory.get(type: "chopper")?.getSpecs()
+
+//Produce cars now
+let carFactory = Producer.getAbstractFactory(factoryType: .car)
+carFactory.get(type: "sedan")?.getSpecs()
+carFactory.get(type: "hatchback")?.getSpecs()
+ 
+print("\n ... \n ... \n ...  \n ...  \n ... ")
+print("\nDone!")
+print("\nReady to enjoy!\n")
