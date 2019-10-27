@@ -96,5 +96,13 @@ class Restaurant {
     }
     
 }
+ 
 
+print("\nChain of responsibility pattern exercise begins!!")
+print("\n ... \n ... \n ... \n ")
+   
+Restaurant().serveTheCustomer()
 
+print("\n ... \n ... \n ...  \n ...  \n ... ")
+print("\nDone!")
+print("\nReady to enjoy!")
