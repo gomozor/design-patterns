@@ -19,4 +19,29 @@ class DataRepository {
     
     init() {}
     
+    private func save(data: Data?) {
+        if let _ = data {
+            print("Data is persisted...")
+        }
+    }
+    
+    private func retrieve() -> Data? {
+        print("Data has been fetched!")
+        return Data()
+    }
+    
 }
+
+
+
+
+print("\Singleton pattern exercise begins!!")
+print("\n ... \n ... \n ... \n ")
+ 
+DataRepository.shared.save(Data("hi".utf8))
+DataRepository.shared.retrieve()
+
+print("\n ... \n ... \n ...  \n ...  \n ... ")
+print("\nDone!")
+print("\nReady to enjoy!")
+
