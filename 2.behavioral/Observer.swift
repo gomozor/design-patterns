@@ -90,3 +90,18 @@ class Student : Observer {
     }
     
 }
+
+print("\nObserver pattern exercise begins!!")
+print("\n ... \n ... \n ... \n ")
+  
+var student_one = Student(name: "1").subscribe()
+var student_two = Student(name: "2").subscribe()
+var student_three = Student(name: "3").subscribe()
+
+print("\n!!! NEW ANNOUNCEMENT !!!")
+SchoolAdministrator.shared.newAnnouncementOccurs("Do not forget your tuition fees! \nOtherwise, you will not be registering any courses!")
+
+print("\n ... \n ... \n ...  \n ...  \n ... ")
+print("\nDone!")
+print("\nReady to enjoy!")
+
