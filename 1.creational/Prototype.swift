@@ -64,8 +64,16 @@ class HumanFactory {
     static func createHuman() -> Woman {
         return Woman(name: "Eva", surname: "NoSurname", age: 1, outfit: "Naked")
     }
-}
+}  
 
 
+print("\n Prototype pattern exercise begins!!")
+print("\n ... \n ... \n ... \n ")
+
+HumanFactory.createHuman()
+
+print("\n ... \n ... \n ...  \n ...  \n ... ")
+print("\nDone!")
+print("\nReady to enjoy!")
 
 
