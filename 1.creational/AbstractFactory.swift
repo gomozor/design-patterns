@@ -42,8 +42,12 @@ protocol Vehicle {
     func getSpecs()
 }
 
-protocol AbstractFactory {
+protocol Factory {
     func get(type:String) -> Vehicle?
+}
+
+protocol AbstractFactory {
+    static func getFactory(factoryType:VehicleType) -> Factory
 }
 
 //Classes - Implementations
@@ -71,7 +75,7 @@ class Chopper: Vehicle {
     }
 }
 
-class CarFactory : AbstractFactory {
+class CarFactory : Factory {
     func get(type: String) -> Vehicle? {
         if let carType = CarType(rawValue: type) {
             switch carType {
@@ -87,7 +91,7 @@ class CarFactory : AbstractFactory {
     }
 }
 
-class MotorcycleFactory : AbstractFactory {
+class MotorcycleFactory : Factory { 
     func get(type: String) -> Vehicle? {
         if let bikeType = BikeType(rawValue: type) {
             switch bikeType {
@@ -104,8 +108,8 @@ class MotorcycleFactory : AbstractFactory {
 }
  
 //Final Class - sums up all the abstraction & is responsible of creation of all factories
-class Producer {
-    static func getAbstractFactory(factoryType:VehicleType) -> AbstractFactory {
+class Producer : AbstractFactory {
+    static func getFactory(factoryType:VehicleType) -> Factory {
         switch factoryType {
             case .motorcyle:
                 return MotorcycleFactory()
@@ -127,12 +131,12 @@ print("\nAbstractFactory pattern exercise begins!!")
 print("\n ... \n ... \n ...  \n ...  \n ... ")
 
 //Produce bikes first
-let bikeFactory = Producer.getAbstractFactory(factoryType: .motorcyle)
+let bikeFactory = Producer.getFactory(factoryType: .motorcyle)
 bikeFactory.get(type: "naked")?.getSpecs()
 bikeFactory.get(type: "chopper")?.getSpecs()
 
 //Produce cars now
-let carFactory = Producer.getAbstractFactory(factoryType: .car)
+let carFactory = Producer.getFactory(factoryType: .car)
 carFactory.get(type: "sedan")?.getSpecs()
 carFactory.get(type: "hatchback")?.getSpecs()
  
