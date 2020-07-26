@@ -1,5 +1,5 @@
 # Design Patterns
-##### Design patterns are previously created, algorithmic solutions for common problems and can be applied in any object-oriented language.
+Design patterns are previously created, algorithmic solutions for common problems and can be applied in any object-oriented language.
 -----------------------------------
 
 ### Creational Patterns
