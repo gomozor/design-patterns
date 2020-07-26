@@ -1,15 +1,15 @@
 # Design Patterns
-design patterns are previously created, algorithmic solutions for common problems and can be applied in any object-oriented language.
+###### Design patterns are previously created, algorithmic solutions for common problems and can be applied in any object-oriented language.
 -----------------------------------
 
-# Creational Patterns
+### Creational Patterns
    - Abstract Factory
    - Builder
    - Factory
    - Prototype
    - Singleton 
 
-# Behavioral Patterns
+### Behavioral Patterns
    - Delegation
    - Chain of Responsibility
    - Command
@@ -20,7 +20,7 @@ design patterns are previously created, algorithmic solutions for common problem
    - Observer
    - State
 
-# Structural Patterns
+### Structural Patterns
    - Adapter
    - Bridge
    - Composite
