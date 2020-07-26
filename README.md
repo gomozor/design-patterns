@@ -1,7 +1,7 @@
 # design-patterns
 design patterns are previously created, algorithmic solutions for common problems and can be applied in any object-oriented language.
 
-to run a swift pattern in terminal
+to run a swift pattern in terminal 
 -----------------------------------
 
 type the command after the dollar sign and hit enter:
