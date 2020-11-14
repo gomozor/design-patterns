@@ -14,29 +14,19 @@
 
 import Foundation
 
-
-protocol Clone where Self : Human {
+protocol Human {
     func clone() -> Human
-}
-
-class Human: Clone {
-    typealias T = Human
-    func clone() -> Human {
-        return self
-    }
 }
 
 class Woman: Human {
     
-    var name:String?
-    var surname:String?
-    var age:Int?
-    var outfit:String?
+    var name: String
+    var surname: String
+    var age: Int
+    var outfit: String
+     
     
-    override init() { }
-    
-    convenience init(name:String, surname:String, age:Int, outfit:String) {
-        self.init()
+    init(name: String, surname:String, age:Int, outfit:String) {
         self.name = name
         self.surname = surname
         self.age = age
@@ -47,14 +37,13 @@ class Woman: Human {
     //Suppose this a costly database operation
     //You need to return the value of nearly saved object instance
     
-    @discardableResult func created() -> Woman {
+    func created() {
         print("OUTPUT: A new woman created!")
-        print("\nWoman: \n\t name:\(name ?? "")\n\t surname:\(surname ?? "")\n\t age:\(age ?? 0)\n\t outfit:\(outfit ?? "")")
-        return (clone() as! Woman)
+        print("\nWoman: \n\t name:\(name)\n\t surname:\(surname)\n\t age:\(age)\n\t outfit:\(outfit)")
     }
     
-    override func clone() -> Human {
-        return self
+    func clone() -> Human {
+        return Woman(name: name, surname: surname, age: age, outfit: outfit)
     }
 }
 
@@ -64,7 +53,7 @@ class HumanFactory {
     static func createHuman() -> Woman {
         return Woman(name: "Eva", surname: "NoSurname", age: 1, outfit: "Naked")
     }
-}  
+}
 
 
 print("\n Prototype pattern exercise begins!!")
